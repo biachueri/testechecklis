@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Conhecimento da Equipe de Produto</title>
+    <style>
+        .checklist {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .checklist h2 {
+            color: #007BFF;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .results {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="checklist" class="checklist">
+        <h2>Checklist de Conhecimento da Equipe de Produto</h2>
+        <form id="quizForm">
+            <div class="question">
+                <h3>Conhecimento sobre a Estrutura do Negócio</h3>
+                <p>A equipe de produto entende como o negócio está estruturado?</p>
+                <label><input type="radio" name="q1" value="1"> Sim</label>
+                <label><input type="radio" name="q1" value="0"> Não</label>
+                <label><input type="radio" name="q1" value="0.5"> Parcialmente</label>
+            </div>
+            <div class="question">
+                <p>Todos conhecem as principais linhas de receita da empresa?</p>
+                <label><input type="radio" name="q2" value="1"> Sim</label>
+                <label><input type="radio" name="q2" value="0"> Não</label>
+                <label><input type="radio" name="q2" value="0.5"> Parcialmente</label>
+            </div>
+            <div class="question">
+                <p>A equipe está ciente dos custos associados aos produtos?</p>
+                <label><input type="radio" name="q3" value="1"> Sim</label>
+                <label><input type="radio" name="q3" value="0"> Não</label>
+                <label><input type="radio" name="q3" value="0.5"> Parcialmente</label>
+            </div>
+            <div class="question">
+                <h3>Visão Holística</h3>
+                <p>A equipe de produto pensa além de funcionalidades e recursos, considerando o impacto das suas decisões no sucesso geral do produto e da empresa?</p>
+                <label><input type="radio" name="q4" value="1"> Sim</label>
+                <label><input type="radio" name="q4" value="0"> Não</label>
+                <label><input type="radio" name="q4" value="0.5"> Parcialmente</label>
+            </div>
+            <!-- Adicione mais perguntas conforme necessário -->
+        </form>
+        <div id="results" class="results">
+            <h3>Resultado</h3>
+            <p id="score">Sua pontuação é: 0</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('quizForm');
+            const inputs = form.querySelectorAll('input[type="radio"]');
+
+            inputs.forEach(input => {
+                input.addEventListener('change', calculateScore);
+            });
+
+            function calculateScore() {
+                let score = 0;
+                const checkedInputs = form.querySelectorAll('input[type="radio"]:checked');
+
+                checkedInputs.forEach(input => {
+                    score += parseFloat(input.value);
+                });
+
+                document.getElementById('score').innerText = `Sua pontuação é: ${score}`;
+            }
+        });
+    </script>
+</body>
+</html>
